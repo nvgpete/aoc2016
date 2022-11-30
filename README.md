@@ -34,6 +34,7 @@ straightforward enough to not require any comments.
 
 ## Synopsis of each days problem
 
+```
 Day  1 - Find location from directions like Left 2 blocks etc.
 Day  2 - Open door lock with unusual keypad.
 Day  3 - Find valid triangles with given sides.
@@ -59,3 +60,4 @@ Day 22 - Moving some data in a grid storage to where you can get it.
 Day 23 - More weird assembly code to open safe
 Day 24 - Traveling salesman problem in a maze.
 Day 25 - One last assembly code problem to clock antenna.
+```
