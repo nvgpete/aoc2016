@@ -1,0 +1,12 @@
+Opening a safe by running self-modifying code
+(Hopefully, the cpu does not have a long instruction pipeline)
+
+Fortunately, the parsing half of the program already works on the new 'tgl'
+instruction. (Good thing there weren't any other opcodes starting with 't').
+
+The execution part requires more than just adding the new instruction, since
+now some of the old instructions may end up with illegal operands after being
+tgl'ed. Also, there are some new opcode operand combinations.
+
+The problem warns that the second part may take a bit, and it did, 21.5
+seconds.

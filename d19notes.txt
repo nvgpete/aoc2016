@@ -1,0 +1,36 @@
+White Elephant parties with odd rules.
+(Though considering some of the gifts I've gotten at such parties, I
+wouldn't mind seeing one person getting all the gifts, as long as it wasn't
+me)
+
+There is no data file; number of elves=3012210.
+
+I think the first computer program I ever wrote, in a course using some
+long-dead made-up assembly language, was a variation of this problem. There
+were some number of people sitting in a circle and every nth one was removed
+going around the circle until only one remained. I probably still have it
+somewhere up in my school memorabilia.
+
+Part a is easy; every second elf loses his gifts until only one is left. I
+initialized my array of elves with just the odd-numbered ones, since all the
+even-numbered ones will lose on the first turn. Then I remove every other
+elf (being careful of where I start) and shorten the array by 1/2, until
+only 1 elf is left.
+
+The second part is harder to visualize, so I wrote a php version, which is
+simple enough to be obviously correct. That allowed me to check results
+from the c program for part b. Note that the rules are equivalent to
+starting 1/2 way across the circle, and then only leaving every 3rd elf.
+Removing 2/3 of the elves continues as you loop back around the beginning.
+For this reason, I initialized my elf array with the first elf who was going
+to be removedin in the first position of the elf array. The loop is similar
+to part a until we ony have 1 or 2 elves left.
+
+You might ask why didn't I use my obviously correct php program? It turns
+out that the 'array_splice' function is rather expensive, since it reindexes
+the array. Thus for my 3012210 elves, I estimate over a day to run. The c
+version took 0.02 seconds.
+
+After the code was written and the stars were awarded, I realized that some
+shortcuts I took wouldn't  work for odd numbers of elves so I have gone back
+and corrected that oversight. 

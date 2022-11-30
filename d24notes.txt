@@ -1,0 +1,10 @@
+A robot wandering through a maze.
+
+I broke the problem into two parts.
+
+1. Find the distance through the maze between each pair of points.
+
+2. Traveling salesman problem given the distances found above.
+
+Nothing much more to see here, though it took a fair amount of code to
+solve.

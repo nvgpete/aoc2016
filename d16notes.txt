@@ -1,0 +1,13 @@
+Filling disks large and small with dragon curves and checksums
+
+No d16a.txt file, input was '1111001011001001'.
+To get part b answer, compile with -DPARTB.
+
+Good example of how c pointers can make short work of a problem that looks
+more complex than it is. Note that '0'^1='1' (and vice versa) and 
+(logical)+'0'={'0','1'} allowing me to work with  characters '0' and '1'
+though the code would probably have been a bit quicker if I converted to
+binary 0 & 1 and back.
+
+
+				

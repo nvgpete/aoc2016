@@ -1,0 +1,6 @@
+Reclaiming a signal from the noise
+
+Nothing much to this one, other than I expected to get an actual word from
+the decoding as in the example, rather than the random characters I got.
+That caused me to do some unnecessary debugging before I realized my
+answers were correct.

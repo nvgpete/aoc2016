@@ -1,0 +1,9 @@
+Dropping balls through rotating disks with slots
+
+Easy problem. For part a, I just looped starting at t=0 and looking for a
+time that the ball would go through. I could have done the same for part b,
+but it was easier to notice that all the disks had prime numbers of
+positions, so that after the first success, subsequent successes could be
+found by multiplying the numbers of positions of the first 6 disks together
+and adding that to the first success time until I found one that worked for
+the 7th disk.

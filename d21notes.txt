@@ -1,0 +1,5 @@
+Scrambling passwords forwards and backwards
+(Though being able to unscramble passwords is a really bad feature)
+
+Since most of the operations are symmetric, unscrambling uses mostly the
+same code. See my comments in the code.

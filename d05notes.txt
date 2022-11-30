@@ -1,0 +1,25 @@
+Passwords to open doors by calculating MD5 hashes
+
+There is no d05a.txt data file since the input, "reyedfim" was short enough
+to just embed in the program.
+
+This problem is similar to the aoc2015/day 4 puzzle, so I have copied the
+notes from that problem and edited them slightly.
+
+I have written all of the code for these puzzles in c because that is where I
+am most comfortable. However, even I will admit c was not the best choice
+for this problem. Since I am not going to write a MD5 hasher myself, I need
+to find what c provides. The crypto library does provide MD5(), but it is
+not particularly convenient to use. It requires unsigned *char while most
+other string functions require *char so there will need to be some casting
+done to avaoid compiler complaints. It also returns a 16 byte binary array
+rather than 32 bytes of hex which would be more useful for this problem.
+(Thus the odd condition in my if() statement, and the shifting and anding
+and odd character conversions.) You will also need to compile with something
+like         gcc -O2 -l crypto -o d05a d05a.c 
+
+Just to prove I could do it, there is also a php version which will run as
+./d05a.php if php is installed. The php version is about 1/2 the size and
+quite a bit more readable. The php version is only about 4% slower since most
+of the time is spent in the MD5 code which will be the same regardless of the
+language. 

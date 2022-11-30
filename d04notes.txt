@@ -1,0 +1,12 @@
+Find the room with Santa's stuff
+
+Pretty simple. The program dumps out all the legal room names since part b of
+the problem asked for the room where "North Pole objects are stored" and the
+room is named "Northpole objects storage". I didn't feel like writing a
+linguistics analyzer to get the second from the first so after I tried
+programatically looking for "North Pole objects" and failed, I just manually 
+scanned through the list of valid rooms.
+
+Something like
+ ./d04a | sort -k 2 
+gives a more organized list of rooms.

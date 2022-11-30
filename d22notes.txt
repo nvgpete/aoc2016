@@ -1,0 +1,20 @@
+Moving data around on an array of disks arranged as a grid.
+
+There is no code that gives an answer for this one.
+
+For part a, I did several several sorts on various columns of the data like:
+sort -n -k 2 d22a.txt | more
+
+This showed me there were 1050 nodes in all, 1 empty, 6 too large to move
+and the rest small enough to move to the empty node. None of them could be
+moved to any but the empty node. Thus the answer to part a was 
+1050 - 6(immovable) - 1(empty) = 1043.
+
+Part b was analagous to one of those puzzles with 15 slidable squares and a
+hole where you tried to move all the slidable squares to form the numbers
+1-15 in order or sometimes a picture, except lots bigger with a few
+immovable square. There is a d22b.c program, but it merely prints out the
+layout. From that, one can just count that it takes 45 moves to get the
+space next to the * and move the * left 1. For each additional move left of
+the * it takes 5 moves, times 28 nodes to move to get to the top left corner
+for a total of 185 moves in all.

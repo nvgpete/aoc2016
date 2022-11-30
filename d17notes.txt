@@ -1,0 +1,15 @@
+Moving through small rooms with doors locked or unlocked based on MD5 hashes.
+
+By now you have probably read my feelings on MD5 hashing in c; if not see
+notes from days 5 and 14.
+
+The starting string, 'mmsxrhfx', is embedded in the program. Don't forget to
+use -lcrypto in the compilation.
+
+Usually if I have both php and c versions, they use essentially the same
+methods. However, In this case, I used a FIFO queue and mixed array in php
+since they are easy to implement there. In c, I used recursive function
+calls. The c version also has the usual shifts and &'s to isolate the hex
+bytes. Other than that, the code is pretty similar, and about the same size.
+Since the program runs pretty fast, the c version was about 10 times faster.
+ 

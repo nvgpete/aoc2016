@@ -1,0 +1,17 @@
+Create a clock signal for the antenna from assembly code
+
+I wasn't sure what they meant here - a string of 0's and 1's output, or
+maybe a string of 6's (=1010). Sometimes you just have to run the code and
+see what you get. 
+
+The 'out' instruction was already parsed properly (no other opcodes starting
+with 'o' !) so it was just a matter of adding it to the interpreter. I
+started by just printing whatever was output, which at least showed me that
+I should expect a sequence of just 0's and 1's.
+
+I changed the 'out' execution so it checked if it was alternating 0's and 1's
+for at least 20 iterations and broke out of the execution loop to try the
+next value of 'a' if that failed. 
+
+Fortunately there were no values of 'a' that executed indefinitely without
+doing any output.

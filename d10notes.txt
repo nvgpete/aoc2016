@@ -1,0 +1,22 @@
+Bots sorting chips
+
+This problem bears some similarities to day 7 from aoc2015.
+
+Once again I look at the input data to see what is possible; each bot
+can distribute its two chips as follows:
+bot -> bot & bot
+bot -> output & bot
+bot -> output & output
+
+Also, there are some like
+chip -> bot
+
+The first half of the program parses out the input. The top 3 statements
+have bots distributing chips with a source bot and 2 destinations, either
+bots or output bins.
+
+The last ones, which give chips to various bots, are pushed onto a stack.
+
+In the second half, I pop the chip -> bot statements off the stack, and
+execute as many distribution statements as possible. By the time I finish
+the distribution after the last chip -> bot statement, the answers are found.

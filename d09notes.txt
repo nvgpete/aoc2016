@@ -1,0 +1,8 @@
+Super duper compression algorithm
+
+The first part is straightforward.
+Since the second part requires decompressing pieces that result from
+previous decompressions, recursion seems to be the answer. The only
+interesting part (to me at least) is the insertion and removal of \0 string
+terminators so that the original string never needs to be copied as we
+recurse down the levels of (mXn).

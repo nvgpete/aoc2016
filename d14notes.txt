@@ -1,0 +1,35 @@
+Generating one time pads from MD5 hashes
+
+There is no d14a.txt data file since the input, "ahsbgdzn", was given on
+the web page and is embedded in the program. 
+
+This problem is similar to other MD5 hash problems so the notes are similar.
+
+I have written all of the code for these puzzles in c because that is where I
+am most comfortable. However, even I will admit c was not the best choice
+for this problem. Since I am not going to write a MD5 hasher myself, I need
+to find what c provides. The crypto library does provide MD5(), but it is
+not particularly convenient to use. It requires unsigned *char while most
+other string functions require *char so there will need to be some casting
+done to avaoid compiler complaints. It also returns a 16 byte binary array
+rather than 32 bytes of hex which would be more useful for this problem.
+(Thus the conversion from binary to hex after the MD5 calls.)
+
+You will also need to compile with something
+like         gcc -O2 -l crypto -o d14a d14a.c
+Also, add -DPARTB to get the version for part b. 
+
+Just to prove I could do it, there is a php version which will run as
+./d14a.php. To get part b, uncomment the loop over a bunch more MD5 calls.
+The php version is about 1/2 the size and quite a bit more readable. (Well,
+maybe with the exception of the regular expression stuff...) Since in this
+problem there was a lot more being done bsides the MD5 calls, the php version
+was about 10 times slower for part a, but only a bit slower for part b with
+many more MD5 calls per loop. 
+ 
+As far as the actual code, since there are many more consecutive 3 character
+sequences than 5 character, it makes sense to look for both 3 and 5
+character sequences, but only check the previous 1000 when we find a 5
+character sequence. This sometimes causes the valid 3 character sequences to
+be out of order for a while, which is why I look for more than 64 and sort
+as I find new ones.   

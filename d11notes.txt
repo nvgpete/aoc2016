@@ -1,0 +1,63 @@
+Moving chips made from dangerous (sounding?) elements up and down the
+elevator.
+
+There always seems to be one problem that I spend way too much time on. This
+was it for 2016. The following are more or less random observations, in
+mostly chronological order. But first a note on compilation.
+
+There are 6 c programs here; d11a.c & d11b.c are the usual ones. There are
+also d11ar.c, d11as.c, d11br.c, and d11bs.c which correspond to a couple of
+different strategies for finding the solutions to part a and b. Also, all 
+of these can be compiled with -DSORT to produce 6 more versions. More
+explanation on what they are below.
+
+1. There is a d11a.txt file with the data, but rather than try to parse that
+mismash, it's easier to note that there is a chip/generator pair on floor 1,
+4 chips on floor 2, and 4 generators on floor 3 and just embed that into the
+program.
+
+2. I used two bytes per floor to store the bitmaps of the chips and generators
+for the top 3 floors, and derived the same bitmaps for the first floor. This
+allowed me to store the state in 6 bytes of bitmaps plus a byte each for the
+number of steps taken and the floor for the elevator. This also allowed easy
+determination of chip destroying positions, and kept the whole state in 64
+bits to make the state storage more efficient.
+
+3. I stored positions in a FIFO, taking a position from the beginning of the
+list and generating all possible legal moves and adding them to the end of
+the list. That didn't work so well as the number of moves exploded
+exponentially with each step and by about 12 steps or so I was running out of
+room even with 80 MB or so of FIFO and I figured the solution was at least
+twice as many steps. 
+
+4. Since there were often multiple ways to reach the same position, a
+transposition table seemed like a good idea. I didn't need to keep the
+number of steps for the position, since I could store that in the table, but
+56 bits were too many. Even packing the 6 bitmaps, which were only 5 bits
+each and adding 2 for the elevator was 32 bits, or a 1GB table which was too
+big. However, if I instead stored the floor of each of the 5 chips and 5
+generators, that was 10*2 bits, plus 2 for the elevator is 22, or a 4 MB
+table. I calculated that representation each time I needed to check the
+transposition table, as that was easier than storing it and keeping it
+updated.
+
+5. That is program d11a.c, which runs in under 1/10 of a second and gives
+the correct result (33 steps). Part b adds two more chip generator pairs on first
+floor. This didn't require a change to my storage or even to the initial
+conditions, since the new ones were on floor 1. It did require I look at 7
+bits of the bit maps instead of 5, but that was an easy change.
+
+6. The transposition table was another matter, as it now required 8 more
+bits and 28 bits (256 MB) was larger than I wanted to use, though it might
+have worked. I decided to use a simple hash (multiply by a large prime and
+then mask down to a power of 2 sized table).  In my early attempts, I was
+still running out of space, either in the FIFO or the hash table. 
+
+7. I decided to try a recursive solution since that would eliminate the
+overflows of the FIFO buffer; that was also unsuccessful, and slower on
+part a. The code is in d11ar.c and d11br.c. More musings on execution speed
+towards the end.
+
+8. At that point, I realized all of the chip/generator pairs were equivalent
+so if I could figure out a way to account for that symmetry, there would be
+many fewer transpositions. 

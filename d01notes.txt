@@ -1,0 +1,5 @@
+Find Easter Bunny Headquarters
+
+Harder than the usual first puzzle, but still straightforward. 
+
+I offset the origin to 500,500 since c arrays are all zero based.

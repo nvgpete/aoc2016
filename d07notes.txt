@@ -1,0 +1,5 @@
+The ins and outs of Internet Protocol 7 (IPv7)
+
+Again not hard. I have the vague feeling that at least the first part could
+be done with some kind of grep -c, but that is well beyond my regular
+expression pay grade.

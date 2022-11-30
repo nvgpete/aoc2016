@@ -1,0 +1,12 @@
+Finding safe and unsafe tiles in a room (very long and narrow for part b).
+
+We don't need to keep the whole room, just two rows, which we can swap back
+and forth as we move down the length. Also, an extra safe tile on either
+end makes boundary conditions simpler.
+
+Also note that the rather complex rules are equivalent to: 
+If the diagnonal left and right tiles are different, it's a trap; otherwise
+it's safe.
+
+I wondered whether I'd need to look for further simplification to do 400000
+rows, but since it ran in about 1/4 second that wasn't necessary.
